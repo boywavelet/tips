@@ -21,4 +21,6 @@ sudo !!
 ## open an editor to run a command
 ctrl+x+e   
 
+## show pid of some program
+pidof app\_name
 
