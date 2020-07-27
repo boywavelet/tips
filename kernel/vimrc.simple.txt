@@ -1,0 +1,174 @@
+"g设定搜索是的高亮显示
+set hlsearch
+
+" 不要使用vi的键盘模式，而是vim自己的
+set nocompatible
+
+" history文件中需要记录的行数
+set history=100
+
+" 在处理未保存或只读文件的时候，弹出确认
+set confirm
+
+" 侦测文件类型
+filetype on
+
+" 载入文件类型插件
+filetype plugin on
+
+" 为特定文件类型载入相关缩进文件
+filetype indent on
+
+" 保存全局变量
+set viminfo+=!
+
+" 带有如下符号的单词不要被换行分割
+set iskeyword+=_,$,@,%,#,-
+
+" 语法高亮
+syntax on
+
+" 高亮字符，让其不受100列限制
+:highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+":match OverLength '"%101v.*'
+
+" 状态行颜色
+highlight StatusLine guifg=SlateBlue guibg=Yellow
+highlight StatusLineNC guifg=Gray guibg=White
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 文件设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 不要备份文件（根据自己需要取舍）
+set nobackup
+
+" 不要生成swap文件，当buffer被丢弃的时候隐藏它
+setlocal noswapfile
+set bufhidden=hide
+
+" 字符间插入的像素行数目
+set linespace=0
+
+" 增强模式中的命令行自动完成操作
+set wildmenu
+
+" 在状态行上显示光标所在位置的行号和列号
+set ruler
+" set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set cmdheight=2
+
+" 使回格键（backspace）正常处理indent, eol, start等
+set backspace=2
+
+" 允许backspace和光标键跨越行边界
+set whichwrap+=<,>,h,l
+
+" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+"set mouse=a
+"set selection=exclusive
+"set selectmode=mouse,key
+
+" 启动的时候不显示那个援助索马里儿童的提示
+set shortmess=atI
+
+" 通过使用: commands命令，告诉我们文件的哪一行被改变过
+set report=0
+
+" 不让vim发出讨厌的滴滴声
+set noerrorbells
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 搜索和匹配
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 高亮显示匹配的括号
+set showmatch
+
+" 匹配括号高亮的时间（单位是十分之一秒）
+set matchtime=5
+
+" 在搜索的时候忽略大小写
+set ignorecase
+
+" 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+set incsearch
+
+" 光标移动到buffer的顶部和底部时保持3行距离
+set scrolloff=3
+
+" 不要闪烁
+set novisualbell
+
+" 我的状态行显示的内容（包括文件类型和解码）
+" set statusline=%f%m%r%h%w" [FORMAT=%{&ff}]" [TYPE=%Y]" [POS=%l,%v][%p%%]" %{strftime(""%d/%m/%y" -" %H:%M"")}
+set statusline=%<%f\ %h%m%r\ %y%=%{v:register}\ %{&ff}\ %-14.(%l,%c%V%)\ %P
+"set statusline=
+"set statusline +=%1*\ %n\ %*            "buffer number
+"set statusline +=%5*%{&ff}%*            "file format
+"set statusline +=%3*%y%*                "file type
+"set statusline +=%4*\ %<%F%*            "full path
+"set statusline +=%2*%m%*                "modified flag
+"set statusline +=%1*%=%5l%*             "current line
+"set statusline +=%2*/%L%*               "total lines
+"set statusline +=%1*%4v\ %*             "virtual column number
+"set statusline +=%2*0x%04B\ %*          "character under cursor
+
+" 总是显示状态行
+set laststatus=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 文本格式和排版
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 自动格式化
+set formatoptions=tcrqn
+
+" 继承前一行的缩进方式，特别适用于多行注释
+set autoindent
+
+" 为C程序提供自动缩进
+set smartindent
+
+" 使用C样式的缩进
+set cindent
+
+"指定文件编码
+set fileencoding=gbk 
+
+"tab展开为空格，仅对python类型文件生效
+autocmd FileType python setlocal expandtab 
+"tab展开为空格，仅对c++源文件(.h/.cpp)生效
+autocmd FileType cpp setlocal fdm=indent expandtab 
+
+" 制表符为4
+set tabstop=4
+
+" 统一缩进为4
+set softtabstop=4
+set shiftwidth=4
+
+" 不要换行
+"set nowrap
+
+" 查找到文件尾后不再从头查找
+set nowrapscan
+
+"设置每行n个字符自动换行
+set textwidth=80
+
+" 在行和段开始处使用制表符
+set smarttab
+
+set nu
+
+let g:go_version_warning = 0
+
+set foldenable              " 开始折叠
+set foldmethod=syntax       " 设置语法折叠
+set foldcolumn=0            " 设置折叠区域的宽度
+setlocal foldlevel=1        " 设置折叠层数为
+set foldlevelstart=99       " 打开文件是默认不折叠代码
+
+"set foldclose=all          " 设置为自动关闭折叠                
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+                            " 用空格键来开关折叠
