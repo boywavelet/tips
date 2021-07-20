@@ -26,3 +26,7 @@ pidof app\_name
 
 ## port repost, LISTEN-bind: --->  fork TCP4
 socat  -d -d -lf socat.log TCP4-LISTEN:23456,bind=10.0.212.101,reuseaddr,fork TCP4:10.0.220.134:12345
+
+## awk split only partial
+echo "one:two:three:four:five:six" | awk '{sub(/:/," ")}1'
+
