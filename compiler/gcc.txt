@@ -1,0 +1,18 @@
+
+-fno-inline-small-functions
+		dont inline
+
+-Ofast
+		Highest "standard" optimization level.
+
+-march=native
+		Enabling the use of all CPU specific instructions. including(-ffast-math)
+	
+-ffast-math
+		fast, not preserve strict IEEE compliance
+
+-flto(After gcc5 not work any more?)
+		allow link time optimization, across different compilation units
+
+-fprofile-generate
+		Profile-Guided Optimisations
